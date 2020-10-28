@@ -1,0 +1,54 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>                                                 
+    <script type="text/javascript">                                                                                                     
+      google.charts.load('current', {'packages':['corechart', 'bar']});                                                                 
+      google.charts.setOnLoadCallback(drawStuff);                                                                                       
+
+      var EUR = [3.7968, 3.8053, 3.8277, 3.8284, 3.8202, 3.8308, 3.8475];                                                                                                                             
+      var days = ['2020-01-16', '2020-01-17', '2020-01-20', '2020-01-21', '2020-01-22', '2020-01-23', '2020-01-24'];     
+	  
+      function drawStuff() {                                                                                                            
+        var chartDiv = document.getElementById('chart_div');                                                                            
+
+        var data = google.visualization.arrayToDataTable([                                                                              
+           ['day', 'EUR'],                                                                                         
+           [days[0], EUR[0]],                                                                                   
+           [days[1], EUR[1]],                                                                                   
+           [days[2], EUR[2]],                                                                                   
+           [days[3], EUR[3]],                                                                                   
+           [days[4], EUR[4]],                                                                                   
+           [days[5], EUR[5]],                                                                                   
+           [days[6],EUR[6]],                                                                                    
+            ]);                                                                                                                         
+			
+        var materialOptions = {                                                                                                         
+          width: 500,                                                                                                                  
+          chart: {                                                                                                                      
+            title: 'Kursy walut',                                                                                                       
+
+          },                                                                                                                            
+          axes: {                                                                                                                       
+            y: {                                                                                                                        
+              value: {label: 'value'}, // Left y-axis..                                                                                 
+            }                                                                                                                           
+          }                                                                                                                             
+        };                                                                                                                              
+
+        var classicOptions = {                                                                                                          
+          width: 500,                                                                                                                   
+          series: {                                                                                                                     
+            0: {targetAxisIndex: 0},                                                                                                    
+          },                                                                                                                            
+        };                                                                                                                              
+
+        function drawClassicChart() {                                                                                                   
+          var classicChart = new google.visualization.ColumnChart(chartDiv);                                                            
+          classicChart.draw(data, classicOptions);                                                                                
+        }                                                                                                                               
+
+        drawClassicChart();                                                                                                            
+
+};                                                                                                                             
+</script>                                                                                                                               
+  <button id="change-chart">Change to Classic</button>                                                                                  
+  <br><br>                                                                                                                              
+  <div id="chart_div" style="width: 800px; height: 500px;"></div>
